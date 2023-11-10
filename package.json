@@ -2,9 +2,11 @@
   "scripts": {
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
-    "start": "govuk-prototype-kit start"
+    "start": "govuk-prototype-kit start",
+    "generate-data": "node ./scripts/generate-applications.js"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.2.0",
     "@govuk-prototype-kit/common-templates": "1.2.2",
     "govuk-frontend": "4.7.0",
     "govuk-prototype-kit": "13.14.0"
