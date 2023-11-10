@@ -1,0 +1,47 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Sign in" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <p><a href="/account/password/reset">Reset your password</a> if you’ve forgotten it.</p>
+
+      <form method="post" novalidate>
+
+        {{ govukInput({
+          id: "signIn[emailAddress]",
+          name: "signIn[emailAddress]",
+          type: "email",
+          label: {
+            text: "Email address",
+            classes: "govuk-label--m"
+          },
+          value: data.signIn.emailAddress
+        }) }}
+
+        {{ govukInput({
+          id: "signIn[password]",
+          name: "signIn[password]",
+          type: "password",
+          label: {
+            text: "Password",
+            classes: "govuk-label--m"
+          },
+          value: data.signIn.password
+        }) }}
+
+        {{ govukButton({
+          text: "Sign in"
+        }) }}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
