@@ -1,3 +1,7 @@
+.govuk-header {
+  border-bottom: 10px solid govuk-colour('blue');
+}
+
 
 .govuk-header__logo {
   @include govuk-media-query($from: tablet) {
