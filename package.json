@@ -8,6 +8,7 @@
   "dependencies": {
     "@faker-js/faker": "^8.2.0",
     "@govuk-prototype-kit/common-templates": "1.2.2",
+    "@x-govuk/govuk-prototype-components": "^2.0.3",
     "govuk-frontend": "4.7.0",
     "govuk-prototype-kit": "13.14.0"
   }
