@@ -6,3 +6,7 @@
 // Add extra styles here
 @import "components/list.scss";
 @import "components/header.scss";
+
+h1 .govuk-tag {
+  vertical-align: middle;
+}

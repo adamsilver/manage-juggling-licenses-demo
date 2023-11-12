@@ -9,7 +9,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption-l">{{application.id}}</span>
-      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+      <h1 class="govuk-heading-l">
+        {{ pageName }}
+        {{ govukTag({
+          text: application.status,
+          classes: application.status | statusColour
+        }) }}
+      </h1>
 
       <h2 class="govuk-heading-m">Application details</h2>
 
