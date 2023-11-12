@@ -5,6 +5,8 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
+{% from "_components/address/macro.njk" import appAddress %}
+
 {% block header %}
   {% include "_includes/header.njk" %}
   {% include "_includes/primary-navigation.njk" %}

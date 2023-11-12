@@ -1,0 +1,9 @@
+{{params.address.line1}}<br>
+{% if params.address.line2 %}
+  {{params.address.line2}}<br>
+{% endif %}
+{{params.address.town}}<br>
+{% if params.address.county %}
+  {{params.address.county}}<br>
+{% endif %}
+{{params.address.postcode}}

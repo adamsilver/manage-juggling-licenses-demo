@@ -1,0 +1,149 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = application.personalDetails.firstName + ' ' + application.personalDetails.lastName %}
+{% set primaryNavId = 'applications' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{application.id}}</span>
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <h2 class="govuk-heading-m">Application details</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Application ID"
+            },
+            value: {
+              text: application.id
+            }
+          },
+          {
+            key: {
+              text: "Sent date"
+            },
+            value: {
+              text: application.sentDate | govukDate + ' at ' + application.sentDate | govukTime
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Personal details</h2>
+
+      {% set address %}
+        {{appAddress({ address: application.personalDetails.address })}}
+      {% endset %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: application.personalDetails.emailAddress
+            }
+          },
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: application.personalDetails.firstName
+            }
+          },
+          {
+            key: {
+              text: "Last name"
+            },
+            value: {
+              text: application.personalDetails.lastName
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: application.personalDetails.phoneNumber
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: address
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Juggling experience</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "How many balls can you juggle?"
+            },
+            value: {
+              text: application.experience.numberOfBalls
+            }
+          },
+          {
+            key: {
+              text: "What is your most impressive juggling trick?"
+            },
+            value: {
+              html: application.experience.trick | nl2br
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Evidence</h2>
+
+      {% if application.evidence.files %}
+        {% set evidenceList %}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for file in application.evidence.files %}
+              <li>
+                <a href="#">{{file.name}} ({{file.size}})</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endset %}
+      {% endif %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Do you have any evidence to upload?"
+            },
+            value: {
+              text: application.evidence.hasEvidence
+            }
+          },
+          {
+            key: {
+              text: "Uploaded files"
+            },
+            value: {
+              html: evidenceList
+            }
+          } if application.evidence.files
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

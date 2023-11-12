@@ -7,3 +7,4 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
 require('./routes/account')(router)
+require('./routes/applications')(router)
