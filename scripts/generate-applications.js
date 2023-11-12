@@ -11,6 +11,12 @@ const generateApplication = () => {
 
   application.sentDate = faker.date.recent({ days: 21 })
 
+  application.status = faker.helpers.arrayElement([
+    'Received',
+    'Approved',
+    'Rejected'
+  ])
+
   // Personal details
   application.personalDetails = {}
   application.personalDetails.firstName = faker.person.firstName()
