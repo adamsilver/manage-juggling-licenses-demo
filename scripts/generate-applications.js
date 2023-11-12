@@ -9,6 +9,8 @@ const generateApplication = () => {
   // Application ID
   application.id = faker.number.int({ min: 123456, max: 999999 })
 
+  application.sentDate = faker.date.recent({ days: 21 })
+
   // Personal details
   application.personalDetails = {}
   application.personalDetails.firstName = faker.person.firstName()
