@@ -9,6 +9,8 @@ const generateApplication = () => {
   // Application ID
   application.id = "" + faker.number.int({ min: 123456, max: 999999 })
 
+  let now = new Date().toISOString()
+
   application.sentDate = faker.date.recent({ days: 21 })
 
   application.status = faker.helpers.arrayElement([
@@ -16,6 +18,19 @@ const generateApplication = () => {
     'Approved',
     'Rejected'
   ])
+
+  if(application.status == 'Rejected') {
+    application.rejectedDate = faker.date.between({
+      from: application.sentDate,
+      to: now
+    })
+  }
+  if(application.status == 'Approved') {
+    application.approvedDate = faker.date.between({
+      from: application.sentDate,
+      to: now
+    })
+  }
 
   // Personal details
   application.personalDetails = {}

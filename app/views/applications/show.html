@@ -17,6 +17,14 @@
         }) }}
       </h1>
 
+      {% if application.status == 'Approved' %}
+        <p>Application approved on {{application.approvedDate | govukDate}} at {{application.approvedDate | govukTime}}.</p>
+      {% endif %}
+
+      {% if application.status == 'Rejected' %}
+        <p>Application rejected on {{application.rejectedDate | govukDate}} at {{application.rejectedDate | govukTime}}.</p>
+      {% endif %}
+
       <h2 class="govuk-heading-m">Application details</h2>
 
       {{ govukSummaryList({
