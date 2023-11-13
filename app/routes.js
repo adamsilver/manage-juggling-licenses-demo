@@ -8,3 +8,4 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 require('./routes/account')(router)
 require('./routes/applications')(router)
+require('./routes/application--approve')(router)

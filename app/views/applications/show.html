@@ -17,6 +17,13 @@
         }) }}
       </h1>
 
+      {% if application.status == 'Received' %}
+        {{ govukButton({
+          text: "Approve",
+          href: "/applications/" + application.id + "/approve"
+        }) }}
+      {% endif %}
+
       {% if application.status == 'Approved' %}
         <p>Application approved on {{application.approvedDate | govukDate}} at {{application.approvedDate | govukTime}}.</p>
       {% endif %}
