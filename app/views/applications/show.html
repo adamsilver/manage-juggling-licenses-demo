@@ -18,10 +18,17 @@
       </h1>
 
       {% if application.status == 'Received' %}
-        {{ govukButton({
-          text: "Approve",
-          href: "/applications/" + application.id + "/approve"
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Approve",
+            href: "/applications/" + application.id + "/approve"
+          }) }}
+          {{ govukButton({
+            text: "Reject",
+            href: "/applications/" + application.id + "/reject",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
       {% endif %}
 
       {% if application.status == 'Approved' %}

@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Confirm that you want to reject this application" %}
+{% set primaryNavId = 'applications' %}
+
+{% set applicationUrl = "/applications/" + application.id %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: applicationUrl
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        {{application.personalDetails.firstName}}
+        {{application.personalDetails.lastName}}
+      </span>
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <form method="post">
+        {{ govukButton({
+          text: "Reject application",
+          classes: "govuk-button--warning"
+        }) }}
+      </form>
+
+      <p><a href="{{applicationUrl}}">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
