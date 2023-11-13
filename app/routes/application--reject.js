@@ -14,6 +14,8 @@ module.exports = router => {
     application.status = 'Rejected'
     application.rejectedDate = new Date().toISOString()
 
+    req.flash('success', 'Application rejected')
+
     res.redirect(`/applications/${application.id}`)
   })
 

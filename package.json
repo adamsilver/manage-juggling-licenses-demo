@@ -10,6 +10,7 @@
     "@govuk-prototype-kit/common-templates": "1.2.2",
     "@x-govuk/govuk-prototype-components": "^2.0.3",
     "@x-govuk/govuk-prototype-filters": "^1.2.0",
+    "connect-flash": "^0.1.1",
     "govuk-frontend": "4.7.0",
     "govuk-prototype-kit": "13.14.0"
   }
