@@ -13,6 +13,7 @@
     "connect-flash": "^0.1.1",
     "govuk-frontend": "4.7.0",
     "govuk-prototype-kit": "13.14.0",
+    "jquery": "3.7.1",
     "lodash": "^4.17.21"
   }
 }

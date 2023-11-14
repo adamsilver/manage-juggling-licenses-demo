@@ -11,3 +11,11 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
   {% include "_includes/header.njk" %}
   {% include "_includes/primary-navigation.njk" %}
 {% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    var AppFrontend = {}
+  </script>
+  <script src="/public/javascripts/components/filter-toggle-button.js"></script>
+{% endblock %}
