@@ -12,6 +12,7 @@
     "@x-govuk/govuk-prototype-filters": "^1.2.0",
     "connect-flash": "^0.1.1",
     "govuk-frontend": "4.7.0",
-    "govuk-prototype-kit": "13.14.0"
+    "govuk-prototype-kit": "13.14.0",
+    "lodash": "^4.17.21"
   }
 }

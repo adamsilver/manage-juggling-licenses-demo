@@ -88,6 +88,15 @@
             },
             value: {
               text: application.personalDetails.firstName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/applications/" + application.id + "/edit-name",
+                  text: "Change",
+                  visuallyHiddenText: "first name"
+                }
+              ]
             }
           },
           {
@@ -96,6 +105,15 @@
             },
             value: {
               text: application.personalDetails.lastName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/applications/" + application.id + "/edit-name",
+                  text: "Change",
+                  visuallyHiddenText: "last name"
+                }
+              ]
             }
           },
           {

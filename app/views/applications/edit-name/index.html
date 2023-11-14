@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Applicant name" %}
+{% set primaryNavId = 'applications' %}
+
+{% set applicationUrl = "/applications/" + application.id %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: applicationUrl
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        Update applicant details - {{application.personalDetails.firstName}}
+        {{application.personalDetails.lastName}}
+      </span>
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      <form method="post">
+        {{ govukInput({
+          id: "editName[firstName]",
+          name: "editName[firstName]",
+          label: {
+            text: "First name",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "Or given name"
+          },
+          value: firstName
+        }) }}
+
+        {{ govukInput({
+          id: "editName[lastName]",
+          name: "editName[lastName]",
+          label: {
+            text: "Last name",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "Or family name"
+          },
+          value: lastName
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p><a href="{{applicationUrl}}">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

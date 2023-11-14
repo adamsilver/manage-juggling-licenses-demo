@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Check details and update applicant name" %}
+{% set primaryNavId = 'applications' %}
+
+{% set applicationUrl = "/applications/" + application.id %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: applicationUrl + '/edit-name'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        Update applicant details - {{application.personalDetails.firstName}}
+        {{application.personalDetails.lastName}}
+      </span>
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: data.editName.firstName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/applications/" + application.id + '/edit-name',
+                  text: "Change",
+                  visuallyHiddenText: "First name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Last name"
+            },
+            value: {
+              text: data.editName.lastName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/applications/" + application.id + '/edit-name',
+                  text: "Change",
+                  visuallyHiddenText: "Last name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <form method="post">
+        {{ govukButton({
+          text: "Update applicant name"
+        }) }}
+      </form>
+
+      <p><a href="{{applicationUrl}}">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
