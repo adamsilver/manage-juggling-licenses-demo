@@ -1,0 +1,18 @@
+<div class="app-search-form">
+  <form>
+    {{ govukInput({
+      id: "search[emailAddress]",
+      name: "search[emailAddress]",
+      label: {
+        text: "Search by email address",
+        classes: "govuk-label--s app-search-form__label"
+      },
+      value: data.search.emailAddress
+    }) }}
+
+    {{ govukButton({
+      text: "Search",
+      classes: "app-search-form__button"
+    }) }}
+  </form>
+</div>

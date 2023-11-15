@@ -1,0 +1,36 @@
+.app-search-form {
+  background-color: govuk-colour('light-grey');
+  padding: govuk-spacing(3);
+  margin-bottom: govuk-spacing(4);
+
+  form {
+    @include govuk-media-query($from: tablet) {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+
+  .govuk-form-group {
+    flex: 1;
+    margin-bottom: govuk-spacing(2);
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 0;
+    }
+  }
+
+
+  .app-search-form__button {
+    margin-bottom: 0;
+
+    @include govuk-media-query($from: tablet) {
+      margin-left: govuk-spacing(2);
+      position: relative;
+      top: -2px;
+    }
+
+  }
+
+
+}
+
+
