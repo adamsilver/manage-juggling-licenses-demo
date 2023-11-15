@@ -5,6 +5,14 @@ module.exports = router => {
   router.get('/applications', (req, res) => {
     let applications = req.session.data.applications
 
+    let emailAddress = _.get(req.session.data.search, 'emailAddress')
+
+    if(emailAddress) {
+      applications = applications.filter(application => {
+        return application.personalDetails.emailAddress.indexOf(emailAddress) > -1
+      })
+    }
+
     // ['Received', ...]
     let selectedStatusFilters = _.get(req.session.data.filters, 'statuses')
     let selectedNumberOfBallsFilters = _.get(req.session.data.filters, 'numberOfBalls')
