@@ -18,45 +18,50 @@
       <div class="app-action-bar">
         <div class="app-action-bar__filter"></div>
       </div>
-      <div class="app-list">
-        {% for application in applications %}
-          <div class="app-list__item">
-            <h2 class="govuk-heading-m">
-              <a href="/applications/{{application.id}}">
-                {{application.personalDetails.firstName}}
-                {{application.personalDetails.lastName}}
-              </a>
-            </h2>
 
-            {{ govukTag({
-              text: application.status,
-              classes: application.status | statusColour
-            }) }}
+      {% if applications.length %}
+        <div class="app-list">
+          {% for application in applications %}
+            <div class="app-list__item">
+              <h2 class="govuk-heading-m">
+                <a href="/applications/{{application.id}}">
+                  {{application.personalDetails.firstName}}
+                  {{application.personalDetails.lastName}}
+                </a>
+              </h2>
 
-            {{ govukSummaryList({
-              classes: "govuk-summary-list--no-border",
-              rows: [
-                {
-                  key: {
-                    text: "Email address"
+              {{ govukTag({
+                text: application.status,
+                classes: application.status | statusColour
+              }) }}
+
+              {{ govukSummaryList({
+                classes: "govuk-summary-list--no-border",
+                rows: [
+                  {
+                    key: {
+                      text: "Email address"
+                    },
+                    value: {
+                      text: application.personalDetails.emailAddress
+                    }
                   },
-                  value: {
-                    text: application.personalDetails.emailAddress
+                  {
+                    key: {
+                      text: "Sent date"
+                    },
+                    value: {
+                      text: application.sentDate | govukDate + ' at ' + application.sentDate | govukTime
+                    }
                   }
-                },
-                {
-                  key: {
-                    text: "Sent date"
-                  },
-                  value: {
-                    text: application.sentDate | govukDate + ' at ' + application.sentDate | govukTime
-                  }
-                }
-              ]
-            }) }}
-          </div>
-        {% endfor %}
-      </div>
+                ]
+              }) }}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>There are no results.</p>
+      {% endif %}
     </div>
   </div>
 {% endblock %}
