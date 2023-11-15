@@ -15,4 +15,8 @@
       classes: "app-search-form__button"
     }) }}
   </form>
+
+  {% if data.search.emailAddress %}
+    <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0"><a class="govuk-link--no-visited-state" href="/applications/clear-search">Clear search</a></p>
+  {% endif %}
 </div>

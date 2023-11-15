@@ -71,6 +71,11 @@ module.exports = router => {
     })
   })
 
+  router.get('/applications/clear-search', (req, res) => {
+    _.set(req, 'session.data.search.emailAddress', '')
+    res.redirect('/applications')
+  })
+
   router.get('/applications/remove-status/:status', (req, res) => {
     _.set(req, 'session.data.filters.statuses', _.pull(req.session.data.filters.statuses, req.params.status))
     res.redirect('/applications')
