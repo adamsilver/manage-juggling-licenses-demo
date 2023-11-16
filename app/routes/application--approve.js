@@ -14,6 +14,12 @@ module.exports = router => {
     application.status = 'Approved'
     application.approvedDate = new Date().toISOString()
 
+    application.events.push({
+      name: 'Application approved',
+      user: 'Natasha Romanoff',
+      date: application.approvedDate
+    })
+
     req.flash('success', 'Application approved')
 
     res.redirect(`/applications/${application.id}`)
