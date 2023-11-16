@@ -71,6 +71,36 @@ const generateApplication = () => {
     }]
   }
 
+  application.events = []
+
+  application.events.push({
+    name: 'Application received',
+    user: 'Applicant',
+    date: application.sentDate
+  })
+
+  const user = faker.helpers.arrayElement([
+    'Tony Stark',
+    'Steve Rogers',
+    'Natasha Romanoff'
+  ])
+
+  if(application.status == 'Approved') {
+    application.events.push({
+      name: 'Application approved',
+      user: user,
+      date: application.approvedDate
+    })
+  }
+
+  if(application.status == 'Rejected') {
+    application.events.push({
+      name: 'Application rejected',
+      user: user,
+      date: application.rejectedDate
+    })
+  }
+
   return application
 }
 
