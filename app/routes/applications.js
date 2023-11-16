@@ -1,4 +1,5 @@
 const _ = require('lodash')
+const Pagination = require('../helpers/pagination')
 
 module.exports = router => {
 
@@ -65,9 +66,14 @@ module.exports = router => {
       })
     }
 
+    let pageSize = 25
+    let pagination = new Pagination(applications, req.query.page, pageSize)
+    applications = pagination.getData()
+
     res.render('applications/index', {
       applications,
-      selectedFilters
+      selectedFilters,
+      pagination
     })
   })
 

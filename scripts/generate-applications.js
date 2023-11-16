@@ -77,7 +77,7 @@ const generateApplication = () => {
 const generateApplications = () => {
   const applications = []
 
-  for(let i = 0; i < 100; i++) {
+  for(let i = 0; i < 249; i++) {
     applications.push(generateApplication())
   }
 
