@@ -10,22 +10,19 @@
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
       <div class="app-list">
-        <div class="app-list__item">
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Application received (John Smith)</h2>
-          <p class="govuk-!-margin-bottom-1">By applicant on 1 September 2023 at 9am</p>
-          <p class="govuk-!-margin-bottom-0"><a href="">View application</a></p>
-        </div>
-        <div class="app-list__item">
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Application approved (John Smith)</h2>
-          <p class="govuk-!-margin-bottom-1">By Tony Stark on 2 September 2023 at 9am</p>
-          <p class="govuk-!-margin-bottom-0"><a href="">View application</a></p>
-        </div>
-        <div class="app-list__item">
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Application rejected (John Smith)</h2>
-          <p class="govuk-!-margin-bottom-1">By Natasha Romanoff on 2 September 2023 at 9am</p>
-          <p class="govuk-!-margin-bottom-0"><a href="">View application</a></p>
-        </div>
+        {% for item in events %}
+          <div class="app-list__item">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+              {{item.event.name}}
+              ({{item.application.personalDetails.firstName}} {{item.application.personalDetails.lastName}})
+            </h2>
+            <p class="govuk-!-margin-bottom-1">By {{item.event.user}} on {{item.event.date | govukDate}} at {{item.event.date | govukTime}}</p>
+            <p class="govuk-!-margin-bottom-0"><a href="/applications/{{item.application.id}}">View application</a></p>
+          </div>
+        {% endfor %}
       </div>
+
+      {% include "_includes/pagination.njk" %}
 
 
     </div>
