@@ -6,6 +6,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
 {% from "_components/address/macro.njk" import appAddress %}
+{% from "_components/checkbox-filter/macro.njk" import appCheckboxFilter %}
 
 {% block header %}
   {% include "_includes/header.njk" %}
@@ -18,4 +19,5 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     var AppFrontend = {}
   </script>
   <script src="/public/javascripts/components/filter-toggle-button.js"></script>
+  <script src="/public/javascripts/components/checkbox-filter.js"></script>
 {% endblock %}

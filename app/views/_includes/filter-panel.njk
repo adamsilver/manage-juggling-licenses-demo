@@ -1,5 +1,212 @@
 {% set filterOptionsHtml %}
 
+  {{ appCheckboxFilter({
+    idPrefix: "subjects",
+    name: "filters[subjects]",
+    classes: "govuk-checkboxes--small",
+    legend: {
+      text: "Subject",
+      classes: "govuk-fieldset__legend--s"
+    },
+    items: [
+      {
+        value: "Accounting",
+        text: "Accounting",
+        checked: checked("['filters']['subjects']", "Accounting")
+      },
+      {
+        value: "Art and design",
+        text: "Art and design",
+        checked: checked("['filters']['subjects']", "Art and design")
+      },
+      {
+        value: "Biology",
+        text: "Biology",
+        checked: checked("['filters']['subjects']", "Biology")
+      },
+      {
+        value: "Business studies",
+        text: "Business studies",
+        checked: checked("['filters']['subjects']", "Business studies")
+      },
+      {
+        value: "Chemistry",
+        text: "Chemistry",
+        checked: checked("['filters']['subjects']", "Chemistry")
+      },
+      {
+        value: "Citizenship",
+        text: "Citizenship",
+        checked: checked("['filters']['subjects']", "Citizenship")
+      },
+      {
+        value: "Classics",
+        text: "Classics",
+        checked: checked("['filters']['subjects']", "Classics")
+      },
+      {
+        value: "Computing",
+        text: "Computing",
+        checked: checked("['filters']['subjects']", "Computing")
+      },
+      {
+        value: "Dance",
+        text: "Dance",
+        checked: checked("['filters']['subjects']", "Dance")
+      },
+      {
+        value: "Design and technology",
+        text: "Design and technology",
+        checked: checked("['filters']['subjects']", "Design and technology")
+      },
+      {
+        value: "Drama",
+        text: "Drama",
+        checked: checked("['filters']['subjects']", "Drama")
+      },
+      {
+        value: "Economics",
+        text: "Economics",
+        checked: checked("['filters']['subjects']", "Economics")
+      },
+      {
+        value: "Engineering",
+        text: "Engineering",
+        checked: checked("['filters']['subjects']", "Engineering")
+      },
+      {
+        value: "English",
+        text: "English",
+        checked: checked("['filters']['subjects']", "English")
+      },
+      {
+        value: "Food Technology",
+        text: "Food Technology",
+        checked: checked("['filters']['subjects']", "Food Technology")
+      },
+      {
+        value: "French",
+        text: "French",
+        checked: checked("['filters']['subjects']", "French")
+      },
+      {
+        value: "Geography",
+        text: "Geography",
+        checked: checked("['filters']['subjects']", "Geography")
+      },
+      {
+        value: "German",
+        text: "German",
+        checked: checked("['filters']['subjects']", "German")
+      },
+      {
+        value: "Health and social care",
+        text: "Health and social care",
+        checked: checked("['filters']['subjects']", "Health and social care")
+      },
+      {
+        value: "History",
+        text: "History",
+        checked: checked("['filters']['subjects']", "History")
+      },
+      {
+        value: "Humanities",
+        text: "Humanities",
+        checked: checked("['filters']['subjects']", "Humanities")
+      },
+      {
+        value: "ICT",
+        text: "ICT",
+        checked: checked("['filters']['subjects']", "ICT")
+      },
+      {
+        value: "Law",
+        text: "Law",
+        checked: checked("['filters']['subjects']", "Law")
+      },
+      {
+        value: "Mandarin",
+        text: "Mandarin",
+        checked: checked("['filters']['subjects']", "Mandarin")
+      },
+      {
+        value: "Mathematics",
+        text: "Mathematics",
+        checked: checked("['filters']['subjects']", "Mathematics")
+      },
+      {
+        value: "Media studies",
+        text: "Media studies",
+        checked: checked("['filters']['subjects']", "Media studies")
+      },
+      {
+        value: "Music",
+        text: "Music",
+        checked: checked("['filters']['subjects']", "Music")
+      },
+      {
+        value: "Philosophy",
+        text: "Philosophy",
+        checked: checked("['filters']['subjects']", "Philosophy")
+      },
+      {
+        value: "Physical education",
+        text: "Physical education",
+        checked: checked("['filters']['subjects']", "Physical education")
+      },
+      {
+        value: "Physics",
+        text: "Physics",
+        checked: checked("['filters']['subjects']", "Physics")
+      },
+      {
+        value: "Politics",
+        text: "Politics",
+        checked: checked("['filters']['subjects']", "Politics")
+      },
+      {
+        value: "Psychology",
+        text: "Psychology",
+        checked: checked("['filters']['subjects']", "Psychology")
+      },
+      {
+        value: "Religious education",
+        text: "Religious education",
+        checked: checked("['filters']['subjects']", "Religious education")
+      },
+      {
+        value: "Relationships and sex education",
+        text: "Relationships and sex education",
+        checked: checked("['filters']['subjects']", "Relationships and sex education")
+      },
+      {
+        value: "Science",
+        text: "Science",
+        checked: checked("['filters']['subjects']", "Science")
+      },
+      {
+        value: "Social sciences",
+        text: "Social sciences",
+        checked: checked("['filters']['subjects']", "Social sciences")
+      },
+      {
+        value: "Sociology",
+        text: "Sociology",
+        checked: checked("['filters']['subjects']", "Sociology")
+      },
+      {
+        value: "Spanish",
+        text: "Spanish",
+        checked: checked("['filters']['subjects']", "Spanish")
+      },
+      {
+        value: "Statistics",
+        text: "Statistics",
+        checked: checked("['filters']['subjects']", "Statistics")
+      }
+    ]
+  }) }}
+
   {{ govukCheckboxes({
     idPrefix: "filters[statuses]",
     name: "filters[statuses]",
