@@ -70,10 +70,18 @@ module.exports = router => {
     let pagination = new Pagination(applications, req.query.page, pageSize)
     applications = pagination.getData()
 
+    selectedSubjectItems = _.get(req.session.data.filters, 'subjects').map(item => {
+      return {
+        href: `/applications/remove-subject/${item}`,
+        text: item
+      }
+    })
+
     res.render('applications/index', {
       applications,
       selectedFilters,
-      pagination
+      pagination,
+      selectedSubjectItems
     })
   })
 
