@@ -12,7 +12,7 @@
   {% set describedBy = params.fieldset.describedBy %}
 {% endif %}
 
-<div id="{{ idPrefix }}" class="app-checkbox-filter {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+<div class="app-checkbox-filter {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 
   <div class="govuk-form-group">
 

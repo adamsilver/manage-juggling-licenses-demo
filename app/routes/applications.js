@@ -15,10 +15,11 @@ module.exports = router => {
     }
 
     // ['Received', ...]
+    let selectedSubjectFilters = _.get(req.session.data.filters, 'subjects')
     let selectedStatusFilters = _.get(req.session.data.filters, 'statuses')
     let selectedNumberOfBallsFilters = _.get(req.session.data.filters, 'numberOfBalls')
 
-    let hasFilters = _.get(selectedStatusFilters, 'length') || _.get(selectedNumberOfBallsFilters, 'length')
+    let hasFilters = _.get(selectedSubjectFilters, 'length') || _.get(selectedStatusFilters, 'length') || _.get(selectedNumberOfBallsFilters, 'length')
 
     let selectedFilters = {
       categories: []
@@ -27,6 +28,7 @@ module.exports = router => {
     // the user has selected a status filter
     if(hasFilters) {
       applications = applications.filter(application => {
+        let matchesSubject = true
         let matchesStatus = true
         let matchesNumberOfBalls = true
 
@@ -39,6 +41,18 @@ module.exports = router => {
         }
 
         return matchesStatus && matchesNumberOfBalls
+      })
+    }
+
+    if(_.get(selectedSubjectFilters, 'length')) {
+      selectedFilters.categories.push({
+        heading: { text: 'Subject' },
+        items: selectedSubjectFilters.map(label => {
+          return {
+            text: label,
+            href: `/applications/remove-subject/${label}`
+          }
+        })
       })
     }
 
@@ -70,12 +84,16 @@ module.exports = router => {
     let pagination = new Pagination(applications, req.query.page, pageSize)
     applications = pagination.getData()
 
-    selectedSubjectItems = _.get(req.session.data.filters, 'subjects').map(item => {
-      return {
-        href: `/applications/remove-subject/${item}`,
-        text: item
-      }
-    })
+    let selectedSubjectItems
+
+    if(selectedSubjectFilters) {
+      selectedSubjectItems = selectedSubjectFilters.map(item => {
+        return {
+          href: `/applications/remove-subject/${item}`,
+          text: item
+        }
+      })
+    }
 
     res.render('applications/index', {
       applications,
@@ -87,6 +105,11 @@ module.exports = router => {
 
   router.get('/applications/clear-search', (req, res) => {
     _.set(req, 'session.data.search.emailAddress', '')
+    res.redirect('/applications')
+  })
+
+  router.get('/applications/remove-subject/:subject', (req, res) => {
+    _.set(req, 'session.data.filters.subjects', _.pull(req.session.data.filters.subjects, req.params.subject))
     res.redirect('/applications')
   })
 
